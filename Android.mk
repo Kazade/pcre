@@ -49,18 +49,18 @@ LOCAL_CFLAGS += -O3 -I. -DHAVE_CONFIG_H
 
 GEN := $(LOCAL_PATH)/pcre_chartables.c
 $(GEN): $(LOCAL_PATH)/pcre_chartables.c.dist
-        $(hide) cp $(LOCAL_PATH)/pcre_chartables.c.dist $@
+		$(hide) cp $(LOCAL_PATH)/pcre_chartables.c.dist $@
 LOCAL_GENERATED_SOURCES += $(GEN)
 LOCAL_SRC_FILES += pcre_chartables.c
 
 GEN := $(LOCAL_PATH)/pcre.h
 $(GEN): $(LOCAL_PATH)/pcre.h.generic
-        $(hide) cp $(LOCAL_PATH)/pcre.h.generic $@
+		$(hide) cp $(LOCAL_PATH)/pcre.h.generic $@
 LOCAL_GENERATED_SOURCES += $(GEN)
 
 GEN := $(LOCAL_PATH)/config.h
 $(GEN): $(LOCAL_PATH)/config.h.generic
-        $(hide) cp $(LOCAL_PATH)/config.h.generic $@
+		$(hide) cp $(LOCAL_PATH)/config.h.generic $@
 LOCAL_GENERATED_SOURCES += $(GEN)
 
 include $(BUILD_SHARED_LIBRARY)
