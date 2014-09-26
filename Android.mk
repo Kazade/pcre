@@ -1,10 +1,7 @@
 #
 #  Android makefile for libpcre
 #
-#  This makefile generates libpcre.so, pcregrep and pcre.h ONLY.
-#  It should be amended to build libpcreposix.so, libpcrecpp.so
-#  and tests.
-
+#  This makefile generates libpcre.so and pcre.h ONLY.
 
 LOCAL_PATH := $(call my-dir)
 
@@ -28,7 +25,6 @@ LOCAL_SRC_FILES :=  \
   pcre_fullinfo.c \
   pcre_get.c \
   pcre_globals.c \
-  pcre_info.c \
   pcre_internal.h \
   pcre_maketables.c \
   pcre_newline.c \
@@ -36,7 +32,6 @@ LOCAL_SRC_FILES :=  \
   pcre_refcount.c \
   pcre_study.c \
   pcre_tables.c \
-  pcre_try_flipped.c \
   pcre_ucd.c \
   pcre_valid_utf8.c \
   pcre_version.c \
@@ -64,16 +59,3 @@ $(GEN): $(LOCAL_PATH)/config.h.generic
 LOCAL_GENERATED_SOURCES += $(GEN)
 
 include $(BUILD_SHARED_LIBRARY)
-
-###
-### Build pcregrep
-###
-
-include $(CLEAR_VARS)
-
-LOCAL_MODULE := pcregrep
-LOCAL_SRC_FILES := pcregrep.c
-LOCAL_CFLAGS += -O3 -I. -DHAVE_CONFIG_H
-LOCAL_SHARED_LIBRARIES := libpcre
-
-include $(BUILD_EXECUTABLE)
