@@ -25,7 +25,6 @@ LOCAL_SRC_FILES :=  \
   pcre_fullinfo.c \
   pcre_get.c \
   pcre_globals.c \
-  pcre_internal.h \
   pcre_maketables.c \
   pcre_newline.c \
   pcre_ord2utf8.c \
@@ -35,17 +34,16 @@ LOCAL_SRC_FILES :=  \
   pcre_ucd.c \
   pcre_valid_utf8.c \
   pcre_version.c \
-  pcre_xclass.c \
-  ucp.h
+  pcre_xclass.c
 
 LOCAL_COPY_HEADERS := pcre.h
 
 LOCAL_CFLAGS += -O3 -I. -DHAVE_CONFIG_H
 
-GEN := $(LOCAL_PATH)/pcre_chartables.c
-$(GEN): $(LOCAL_PATH)/pcre_chartables.c.dist
-		$(hide) cp $(LOCAL_PATH)/pcre_chartables.c.dist $@
-LOCAL_GENERATED_SOURCES += $(GEN)
+pcre/pcre_chartables.c:
+		$(hide) cp pcre/pcre_chartables.c.dist pcre/pcre_chartables.c
+
+LOCAL_GENERATED_SOURCES += pcre_chartables.c
 LOCAL_SRC_FILES += pcre_chartables.c
 
 GEN := $(LOCAL_PATH)/pcre.h
